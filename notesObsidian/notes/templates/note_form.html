@@ -6,20 +6,24 @@ notes
 
 {% block content %}
 
-<h1> notes app obsidian clone</h1>
+<h1> create notes with Obsidian</h1>
+<div style="max-width: 500px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
 
-<h2>
-    {% if form.instance.pk %}
-    Edit notes
-    {% else %}
-    Create notes
-    {% endif %}
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-warning" type="submit">submit</button>
-    </form>
-    <a href="{% url 'note_list' %}">back to notes</a>
-</h2>
-
+    <h3 style="text-align: center; margin-bottom: 20px;">
+        {% if form.instance.pk %}
+        Edit notes
+        {% else %}
+        Create notes
+        {% endif %}
+    
+    </h3>
+        <form action="" method="post" enctype="multipart/form-data" style="margin-bottom: 15px;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button  type="submit" style="width: 100%; background-color: #ffc107; border: none; padding: 10px; color: white; font-size: 16px; border-radius: 4px; cursor: pointer;">submit</button>
+        </form>
+        <a href="{% url 'note_list' %}  style="display: block; text-align: center; margin-top: 20px; color: #007bff; text-decoration: none;"">back to notes</a>
+    
+</div>
+    
 {% endblock %}
