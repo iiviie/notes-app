@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+notes
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mt-4"> want to delete the note?</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger"> DELETE</button>
+    <a class="btn btn-success" href="{% url 'note_list' %}">CANCEL</a>
+</form>
+
+{% endblock %}

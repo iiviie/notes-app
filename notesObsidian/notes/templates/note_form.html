@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+notes
+{% endblock %}
+
+{% block content %}
+
+<h1> notes app obsidian clone</h1>
+
+<h2>
+    {% if form.instance.pk %}
+    Edit notes
+    {% else %}
+    Create notes
+    {% endif %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-warning" type="submit">submit</button>
+    </form>
+    <a href="{% url 'note_list' %}">back to notes</a>
+</h2>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+notes
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center"> NOTES APP </h1>
+
+<a class="btn btn-primary" href="{% url 'note_create' %}"> create note</a>
+
+<div class="container row gap-3">
+    {% for note in notes %} 
+    {% if note.user == user %}
+    <div class="card" style="width: 18rem;">
+      {% if note.photo %}
+        <img src="{{ note.photo.url }}" class="card-img-top" alt="...">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ note.user.username }}</h5>
+        <p class="card-text">{{ note.text }}</p>
+        <a class="btn btn-primary" href="{% url 'note_edit' note.id %}"> edit note</a>
+        <a class="btn btn-danger" href="{% url 'note_delete' note.id %}"> delete note</a>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
