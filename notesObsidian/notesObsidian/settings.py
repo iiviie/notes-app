@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'notes',
     'tailwind',
     'theme',
+    'rest_framework',
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -140,3 +141,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/notes'
 LOGOUT_REDIRECT_URL = '/notes'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
